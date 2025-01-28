@@ -26,4 +26,8 @@ public class RoomService {
 		return roomRepository.save(room);
 	}
 
+	public Room saveRoom(Room room) {
+		return roomRepository.save(room);
+	}
+
 }
