@@ -1,10 +1,7 @@
 package com.chat_app.backend.services;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
-import com.chat_app.backend.entities.Message;
 import com.chat_app.backend.entities.Room;
 import com.chat_app.backend.repository.RoomRepository;
 
@@ -28,6 +25,5 @@ public class RoomService {
 
 		return roomRepository.save(room);
 	}
-	
 
 }
