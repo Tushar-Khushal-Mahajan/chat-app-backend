@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.chat_app.backend.services.RoomService;
 
 @RestController
 @RequestMapping("api/v1/rooms")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class RoomController {
 
 	private RoomService roomService;
@@ -29,6 +31,8 @@ public class RoomController {
 	// create room
 	@PostMapping
 	public ResponseEntity<?> createRoom(@RequestBody String roomId) {
+
+		System.out.println("Room id : " + roomId);
 
 		if (roomService.getRoomByRoomId(roomId) != null) {
 			// Room already exists

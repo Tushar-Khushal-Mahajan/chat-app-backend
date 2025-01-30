@@ -6,6 +6,7 @@ import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -15,6 +16,7 @@ import com.chat_app.backend.entities.Room;
 import com.chat_app.backend.services.RoomService;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:5173/")
 public class ChatController {
 
 	private RoomService roomService;
@@ -23,8 +25,8 @@ public class ChatController {
 		this.roomService = roomService;
 	}
 
-	@MessageMapping("/sendMessage/{roomId}")//send-message <app/sendMessage/{roomId}>
-	@SendTo("/topic/room/{roomId}")//subscribe
+	@MessageMapping("/sendMessage/{roomId}") // send-message <app/sendMessage/{roomId}>
+	@SendTo("/topic/room/{roomId}") // subscribe
 	public Message sendMessage(@DestinationVariable String roomId, @RequestBody MessageRequest request)
 
 	{
