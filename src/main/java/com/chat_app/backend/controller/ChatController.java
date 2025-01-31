@@ -31,6 +31,8 @@ public class ChatController {
 
 	{
 
+		System.out.println("message request : " + request);
+
 		Room room = roomService.getRoomByRoomId(request.getRoomId());
 
 		Message message = new Message();
@@ -41,7 +43,8 @@ public class ChatController {
 		if (room != null) {
 
 			room.getMessages().add(message);
-			roomService.saveRoom(room);
+			Room saveRoom = roomService.saveRoom(room);
+			System.out.println("saved message :" + saveRoom);
 		} else {
 			throw new RuntimeException("Room not found");
 		}
